@@ -17,12 +17,7 @@
 
 ## veterinarios: Registro dos profissionais da clínica.
 
-## Campos: 
-## id, 
-## nome, 
-## crmv (UNIQUE),
-## especialidade, 
-## telefone.
+## Campos: id, nome, crmv (UNIQUE),especialidade, telefone.
 
 ## tutores: Cadastro dos donos dos pets.
 
