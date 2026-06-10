@@ -63,7 +63,7 @@ INSERT INTO consultas (animal_id, veterinario_id, data_hora, diagnostico, valor,
 (11, 1, '2024-06-05 11:00:00', NULL, 150.00, 'agendada');
 
 -- Inserindo 20 pagamentos (vinculados ao ID das 20 consultas geradas acima)
-INSERT INTO pagamentos (consulta_id, valor_pago, forma_pagamento, data_pagamento, status) VALUES 
+INSERT INTO pagamentos (consulta_id, valor_pago, forma_pagamento, data_pagamento, status) VALUES
 (1, 150.00, 'pix', '2024-05-01 09:45:00', 'pago'),
 (2, 120.00, 'cartao', '2024-05-02 11:00:00', 'pago'),
 (3, 80.00, 'dinheiro', '2024-05-03 14:30:00', 'pago'),
