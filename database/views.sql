@@ -1,6 +1,7 @@
-USE petvida;
+drop DATABASE IF EXISTS petvida;
 
-# 1) vw_consultas_completas
+CREATE DATABASE petvida;
+USE petvida;
 
 CREATE OR REPLACE VIEW vw_consultas_completas AS
 SELECT 
@@ -23,7 +24,6 @@ JOIN tutores t ON a.tutor_id = t.id
 JOIN veterinarios v ON c.veterinario_id = v.id
 LEFT JOIN pagamentos p ON p.consulta_id = c.id;
 
-# 2) vw_agenda_hoje
 CREATE OR REPLACE VIEW vw_agenda_hoje AS
 SELECT 
     TIME(data_hora) AS hora,
@@ -36,7 +36,6 @@ FROM vw_consultas_completas
 WHERE DATE(data_hora) = CURDATE()
 ORDER BY data_hora ASC;
 
-# 3) vw_faturamento_mensal
 CREATE OR REPLACE VIEW vw_faturamento_mensal AS
 SELECT 
     YEAR(c.data_hora) AS ano,
@@ -51,7 +50,6 @@ JOIN veterinarios v ON c.veterinario_id = v.id
 LEFT JOIN pagamentos p ON p.consulta_id = c.id
 GROUP BY YEAR(c.data_hora), MONTH(c.data_hora), v.id, v.nome, v.especialidade;
 
-# 4) vw_animais_detalhados
 CREATE OR REPLACE VIEW vw_animais_detalhados AS
 SELECT 
     a.id AS animal_id,
@@ -67,7 +65,6 @@ JOIN tutores t ON a.tutor_id = t.id
 LEFT JOIN consultas c ON c.animal_id = a.id
 GROUP BY a.id, a.nome, a.raca, e.nome, t.nome, t.telefone;
 
-# 5) vw_inadimplentes
 CREATE OR REPLACE VIEW vw_inadimplentes AS
 SELECT 
     c.id AS consulta_id,
